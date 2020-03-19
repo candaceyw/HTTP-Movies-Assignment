@@ -51,16 +51,10 @@ function Movie({ addToSavedList }) {
     <div className='save-wrapper'>
       <MovieCard movie={movie} />
 
-      <div className='save-button' onClick={saveMovie}>
-        Save
-      </div>
-      <div className='edit-button' onClick= {() => history.push(`/update-movie/${match.params.id}`)}>
-        Edit
-      </div>
-      <div className='delete-button' onClick={deleteMovie}>
-        Delete
-      </div>
-    
+      <a class="save-button waves-effect waves-light btn  blue lighten-2" onClick={saveMovie}>Save</a>
+      <a class="edit-button waves-effect waves-light btn amber lighten-1" onClick= {() => history.push(`/update-movie/${match.params.id}`)}>Edit</a>
+      <a class="delete-button waves-effect waves-light btn red lighten-2" onClick={deleteMovie}>Delete</a>
+  
     </div>
   );
 }

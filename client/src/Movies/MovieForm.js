@@ -71,33 +71,85 @@ const MovieForm = (props) => {
 
 
     return (
-        <form onSubmit={handleSubmit}>
-            <input
-            type="text"
+       
+<div class="row" onSubmit={handleSubmit}>
+    <form class="col s12">
+      <div class="row">
+        <div class="input-field col s6">
+          <input type="text"
             name="title"
-            placeholder="title" 
-            onChange={changeHandler}/>
+               onChange={changeHandler} />
+          <label for="title">Title</label>
+        </div>
+        </div>
 
-            <input
-            type="text"
-            name="director"
-            placeholder="director" 
-            onChange={changeHandler}/>
-
-            <input
-            type="text"
+        <div class="row">
+        <div class="input-field col s6">
+          <input type="text"
             name="metascore"
-            placeholder="metascore"
             onChange={changeHandler} />
+          <label for="title">Metascore</label>
+        </div>
+        </div>
 
-            <input
-            type="text"
-            name="stars"
-            placeholder="stars" 
+        <div class="row">
+        <div class="input-field col s6">
+          <input type="text"
+            name="director"           
             onChange={changeHandler}/>
-            <button> Add Star </button>
-        </form>
+          <label for="title">Director</label>
+        </div>
+        </div>
+
+
+        <div class="row">
+        <div class="input-field col s6">
+          <input type="text"
+             name="stars"
+            onChange={changeHandler}/>
+          <label for="title">Stars</label>
+        </div>
+        </div>
+        <button> Add Star </button>
+    </form>
+  </div>
+        
     )
 }
 
 export default MovieForm
+
+
+
+
+
+
+
+
+  // <form onSubmit={handleSubmit}>
+  //           <input
+  //           type="text"
+  //           name="title"
+  //           placeholder="title" 
+  //           onChange={changeHandler}/>
+
+  //           <input
+  //           type="text"
+  //           name="director"
+  //           placeholder="director" 
+  //           onChange={changeHandler}/>
+
+  //           <input
+  //           type="text"
+  //           name="metascore"
+  //           placeholder="metascore"
+  //           onChange={changeHandler} />
+
+  //           <input
+  //           type="text"
+  //           name="stars"
+  //           placeholder="stars" 
+  //           onChange={changeHandler}/>
+         
+  //           <button> Add Star </button>
+  //       </form>
