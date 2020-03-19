@@ -1,29 +1,73 @@
 import React, { useState, useEffect } from 'react'
 import axios from 'axios'
+import { useParams, useHistory } from "react-router-dom";
 
 const MovieForm = (props) => {
-    const [movie, setMovie] = useState({});
+  const { id } = useParams();
+  const [item, setItem] = useState({ id });
+  const history = useHistory()
+
+  console.log("props.match.params.id", props.match.params.id);
+
+  useEffect(() => {
+    if(props.movies == null) {
+      return 
+    }
+
+    const itemToUpdate = props.movies.find( movie => `${movie.id}` === id);
+
+    if (itemToUpdate) {
+      setItem(itemToUpdate);
+    }
+  }, [props.movies, id]);
 
 
+    const changeHandler = ev => {
+      setItem({
+        ...item,
+        [ev.target.name]: ev.target.value
+      });
+    };
+     
+    const handleSubmit = (e) => {
+      e.preventDefault()
 
-      const changeHandler = e => {
-        e.persist();
-        setMovie({...movie, [e.target.name]: e.target.value})  
-      }
-
-
-    const handleSubmit = e => {
-        e.preventDefault();
+      console.log("Testing handlesubmit",{
+        id: id,
+        title: item.title,
+        director: item.director,
+        metascore: item.metascore,
+        stars: [item.stars]
+      })
+      axios
+      .put(`http://localhost:5000/api/movies/${id}`, {
+        id: id,
+        title: item.title,
+        director: item.director,
+        metascore: item.metascore,
+        stars: [item.stars]
+      })
+      .then(putRes => {
+        console.log("putRes", putRes)
         axios
-        .put(`http://localhost:5000/api/movies/${props.match.params.id}`, movie)
-        .then(res => {
-          console.log(res);
-          props.updateMovies(props.match.params.id, res.data)
-          setMovie()
-          props.history.push('/');
-        })
-        .catch(err => console.log(err));
-      }
+        .get("http://localhost:5000/api/movies")
+        .then(getRes => {
+         console.log("getRes", getRes)
+         props.setMovieList([...getRes.data.filter(item => item.id !== props.movie.id), putRes.data]);
+         history.push(`/movies/${id}`)}
+        )
+        .catch(err => console.log(err.response));
+
+        // console.log(res);
+       //  history.push("/");
+
+   
+
+      })
+      .catch(err => {
+        console.log(err);
+      });
+  };
 
 
     return (
@@ -43,7 +87,8 @@ const MovieForm = (props) => {
             <input
             type="text"
             name="metascore"
-            placeholder="metascore" />
+            placeholder="metascore"
+            onChange={changeHandler} />
 
             <input
             type="text"
