@@ -16,9 +16,9 @@ function SavedList({ list }) {
           </NavLink>
         );
       })}
-      <div className="home-button">
-        <Link to="/">Home</Link>
-      </div>
+           <Link to="/"> <a class="home-button waves-effect waves-light btn" >Home</a></Link>
+
+
     </div>
   );
 }

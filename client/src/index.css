@@ -55,15 +55,36 @@ body {
 }
 .save-button {
   position: absolute;
-  top: 25px;
-  right: 25px;
+  top: -250px;
+  right: -725px;
   border: 1px solid grey;
   padding: 5px 10px;
   background-color: lightseagreen;
+  width: 100px;
 }
-.save-button:hover {
-  background-color: green;
-  color: white;
+
+
+.edit-button {
+  position: absolute;
+  top: -200px;
+  right:  -625px;
+  border: 1px solid grey;
+  padding: 5px 10px;
+  background-color: lightskyblue;
+  width: 100px;
+
+}
+
+
+.delete-button {
+  position: absolute;
+  top: -150px;
+  right:  -525px;
+  border: 1px solid grey;
+  padding: 5px 10px;
+  background-color: red;
+  width: 100px;
+
 }
 
 .home-button {
@@ -74,4 +95,8 @@ body {
 .movie-warning {
   color: red;
   text-align: center;
+}
+
+.row {
+  margin: auto auto;
 }
